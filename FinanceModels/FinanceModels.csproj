@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78FA6083-71F3-4CF0-A881-D6EB72E2CF6A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FinanceModels</RootNamespace>
+    <AssemblyName>FinanceModels</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DomainModels\AdminDashboardDatamodel.cs" />
+    <Compile Include="DomainModels\AdminDashboardViewModel.cs" />
+    <Compile Include="DomainModels\AgeingChartDataModel.cs" />
+    <Compile Include="DomainModels\AgeingChartDataViewModel.cs" />
+    <Compile Include="DomainModels\ARComitmentCollectionViewModel.cs" />
+    <Compile Include="DomainModels\ARDetailNameModel.cs" />
+    <Compile Include="DomainModels\ARRUploadHistoryDomainModel.cs" />
+    <Compile Include="DomainModels\ARUploadHistoryViewModel.cs" />
+    <Compile Include="DomainModels\BUReportViewModel.cs" />
+    <Compile Include="DomainModels\ChartDataModel.cs" />
+    <Compile Include="DomainModels\ChildMenu.cs" />
+    <Compile Include="DomainModels\CollectionClass.cs" />
+    <Compile Include="DomainModels\CollectionViewModel.cs" />
+    <Compile Include="DomainModels\CustumerNameModel.cs" />
+    <Compile Include="DomainModels\DivisionModel.cs" />
+    <Compile Include="DomainModels\DivisionRegionPmViewModel.cs" />
+    <Compile Include="DomainModels\JobSummaryAbove365DataModel.cs" />
+    <Compile Include="DomainModels\JobSummaryAbove365ViewModel.cs" />
+    <Compile Include="DomainModels\JobSummaryAbove90DataModel.cs" />
+    <Compile Include="DomainModels\JobSummaryAbove90ViewModel.cs" />
+    <Compile Include="DomainModels\LastSixMonthCollectionModel.cs" />
+    <Compile Include="DomainModels\LastSixMonthCollectionViewModel.cs" />
+    <Compile Include="DomainModels\LastSixMonthDataModel.cs" />
+    <Compile Include="DomainModels\LastSixMonthDataVieModel.cs" />
+    <Compile Include="DomainModels\MCReportModel.cs" />
+    <Compile Include="DomainModels\MenuModel.cs" />
+    <Compile Include="DomainModels\Newloginmodel.cs" />
+    <Compile Include="DomainModels\NewMenu.cs" />
+    <Compile Include="DomainModels\OsArReportDataModel.cs" />
+    <Compile Include="DomainModels\OsARReportViewModel.cs" />
+    <Compile Include="DomainModels\OsBUReportDataModel.cs" />
+    <Compile Include="DomainModels\OsReportAllCustomerNameCodeDataModel.cs" />
+    <Compile Include="DomainModels\OsReportAllCustomerNameCodeViewModel.cs" />
+    <Compile Include="DomainModels\OsReportAllDivisionDataModel.cs" />
+    <Compile Include="DomainModels\OsReportAllDivisionViewModel.cs" />
+    <Compile Include="DomainModels\OsReportAllPmDataModel.cs" />
+    <Compile Include="DomainModels\OsReportAllPmViewModel.cs" />
+    <Compile Include="DomainModels\OsReportAllRegionDataModel.cs" />
+    <Compile Include="DomainModels\OsReportAllRegionViewModel.cs" />
+    <Compile Include="DomainModels\OsreportModel.cs" />
+    <Compile Include="DomainModels\OutstandingVsCollectionDataModel.cs" />
+    <Compile Include="DomainModels\OutstandingVsCollectionViewModel.cs" />
+    <Compile Include="DomainModels\PmSummaryReportDataModel.cs" />
+    <Compile Include="DomainModels\PmSummaryreportViewModel.cs" />
+    <Compile Include="DomainModels\RegionSummaryDataModel.cs" />
+    <Compile Include="DomainModels\RegionSummaryViewModel.cs" />
+    <Compile Include="DomainModels\SumaryReportModel.cs" />
+    <Compile Include="DomainModels\SummaryJobReportDataModel.cs" />
+    <Compile Include="DomainModels\SummaryJobReportViewModel.cs" />
+    <Compile Include="DomainModels\SummaryReportabove365dataModel.cs" />
+    <Compile Include="DomainModels\SummaryReportabove365ViewModel.cs" />
+    <Compile Include="DomainModels\SummaryReportAbove90DataModel.cs" />
+    <Compile Include="DomainModels\SummaryReportAbove90ViewModel.cs" />
+    <Compile Include="DomainModels\TotalAgingData.cs" />
+    <Compile Include="DomainModels\TotalDivision.cs" />
+    <Compile Include="DomainModels\TotalRegion.cs" />
+    <Compile Include="DSOModels\Classxsw.cs" />
+    <Compile Include="DSOModels\DSODataModel.cs" />
+    <Compile Include="DSOModels\DsoInputModel.cs" />
+    <Compile Include="FinanceEntity\AccessRole.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\AccessRoleItem.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\AgingOrder.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARDetail.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\arrbureport.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARR_ErrorLog.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARR_Master.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARR_MonthCollectionTarget.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARR_MonthlyCollection.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARR_MonthlyCollectionTracking.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARR_Remarks.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARR_UploadHistory.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARR_UserDescr.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\ARR_User_Details.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\BankMaster.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\CollectionDetail.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\Collection_View.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\CustMaster.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\DsoMaster.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\excel.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\FileUpload.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\FinanceentityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinanceentityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\FinanceentityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\FinanceentityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinanceentityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\GetTokenizeValue_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\GroupDetail.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\NEWDEPENTRY.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\NEWDEPMAIN.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\NewMenu.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\RegMaster.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\sampleview.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\SO_Detail_Upload.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\splitstring_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\SP_GetMenuData_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\sp_helpdiagrams_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\sysdiagram.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\UploadHistory.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\Upload_History_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\UserDetail.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\User_Details.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\USP_AdminDashboard_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\USP_ARR_Master_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\Usp_Dsodivisiondata_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\USP_FileUpload_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\USP_LastSixMonthCollection_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\USP_LastSixMonthCollection_V2_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\USP_Menu_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceEntity\USP_MonthlyCashIn_Result.cs">
+      <DependentUpon>FinanceentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="FinanceEntity\FinanceentityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FinanceentityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FinanceEntity\FinanceentityModel.edmx.diagram">
+      <DependentUpon>FinanceentityModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FinanceEntity\FinanceentityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FinanceentityModel.edmx</DependentUpon>
+      <LastGenOutput>FinanceentityModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FinanceEntity\FinanceentityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FinanceentityModel.edmx</DependentUpon>
+      <LastGenOutput>FinanceentityModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

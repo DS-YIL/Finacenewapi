@@ -1,0 +1,1733 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Logisticks1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccessRoleItems">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Role Item Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MenuCode" Type="int" />
+    <Property Name="GrpRoleID" Type="int" />
+  </EntityType>
+  <EntityType Name="AccessRoles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="RoleItemIDs" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.AgingOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AgingOrder">
+    <Key>
+      <PropertyRef Name="orderid" />
+    </Key>
+    <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderName" Type="varchar" MaxLength="50" />
+    <Property Name="DisplayOrder" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Logisticks1.dbo.ARCollectionHistory' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ARCollectionHistory">
+          <Property Name="ID" Type="int" />
+        </EntityType>-->
+  <EntityType Name="ARDetail">
+    <Key>
+      <PropertyRef Name="ARdetailID" />
+    </Key>
+    <Property Name="ARdetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillingDocument" Type="nvarchar" MaxLength="20" />
+    <Property Name="CustomerCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerName" Type="nchar" MaxLength="250" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="InvoiceAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="OutStandingAmount" Type="money" />
+    <Property Name="CompanyCode" Type="nchar" MaxLength="20" />
+    <Property Name="DocumentNumber" Type="nchar" MaxLength="20" />
+    <Property Name="DocumentDate" Type="date" />
+    <Property Name="PostingDate" Type="date" />
+    <Property Name="DocumentCurrency" Type="money" />
+    <Property Name="BaseLinePaymentDte" Type="date" />
+    <Property Name="NetDueDate" Type="date" />
+    <Property Name="InvoiceReference" Type="nchar" MaxLength="20" />
+    <Property Name="ProjectID" Type="nchar" MaxLength="20" />
+    <Property Name="ProjectManager" Type="nchar" MaxLength="50" />
+    <Property Name="SalesOffice" Type="nvarchar" MaxLength="10" />
+    <Property Name="SalesOfficeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ARR_ErrorLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PageName" Type="varchar" MaxLength="250" />
+    <Property Name="MethodName" Type="varchar" MaxLength="250" />
+    <Property Name="ErrorMessage" Type="varchar(max)" />
+    <Property Name="InnerException" Type="varchar(max)" />
+    <Property Name="StackTrace" Type="varchar(max)" />
+    <Property Name="SessionUser" Type="varchar" MaxLength="250" />
+    <Property Name="CreatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ARR_Master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="250" />
+    <Property Name="osDate" Type="date" />
+    <Property Name="Division" Type="nvarchar" MaxLength="20" />
+    <Property Name="docno" Type="nvarchar" MaxLength="20" />
+    <Property Name="postingdate" Type="date" />
+    <Property Name="salesoffice" Type="nvarchar" MaxLength="5" />
+    <Property Name="salesofficeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="salesgroup" Type="nvarchar" MaxLength="4" />
+    <Property Name="SalesgroupName" Type="nvarchar" MaxLength="50" />
+    <Property Name="paymentterm" Type="nvarchar" MaxLength="5" />
+    <Property Name="paymenttermDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="sono" Type="nvarchar" MaxLength="12" />
+    <Property Name="pono" Type="nvarchar" MaxLength="100" />
+    <Property Name="podate" Type="date" />
+    <Property Name="wbselement" Type="nvarchar" MaxLength="50" />
+    <Property Name="wbstext" Type="nvarchar" MaxLength="200" />
+    <Property Name="projectmgrid" Type="nvarchar" MaxLength="50" />
+    <Property Name="Projectmanager" Type="nvarchar" MaxLength="100" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="invoicedate" Type="date" />
+    <Property Name="docinvoiceamount" Type="money" />
+    <Property Name="invoiceCurrancy" Type="nvarchar" MaxLength="3" />
+    <Property Name="inrinvoiceamount" Type="money" />
+    <Property Name="receiptamount" Type="money" />
+    <Property Name="tdsamount" Type="money" />
+    <Property Name="retentionamount" Type="money" />
+    <Property Name="outstandingamount" Type="money" />
+    <Property Name="notdue" Type="money" />
+    <Property Name="days1to30" Type="money" />
+    <Property Name="days31to60" Type="money" />
+    <Property Name="days61to90" Type="money" />
+    <Property Name="days91to180" Type="money" />
+    <Property Name="days366to730" Type="money" />
+    <Property Name="above730days" Type="money" />
+    <Property Name="rowno" Type="int" />
+    <Property Name="Fileno" Type="int" />
+    <Property Name="Deleteflag" Type="varchar" MaxLength="1" />
+    <Property Name="days181to365" Type="money" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="YilSono" Type="varchar" MaxLength="20" />
+    <Property Name="DocOutstandingAmount" Type="money" />
+    <Property Name="DocOSCurrency" Type="varchar" MaxLength="4" />
+    <Property Name="CollectedAmount" Type="money" />
+    <Property Name="Narration" Type="nvarchar" MaxLength="2000" />
+    <Property Name="noofdays" Type="int" />
+    <Property Name="NetDueDate" Type="datetime" />
+    <Property Name="JobCode" Type="varchar" MaxLength="25" />
+    <Property Name="Docreceiptamount" Type="money" />
+    <Property Name="DocreceiptamountCurrency" Type="varchar" MaxLength="4" />
+    <Property Name="days730to1095" Type="money" />
+    <Property Name="days1095to1460" Type="money" />
+    <Property Name="days1460to1825" Type="money" />
+    <Property Name="days1825to2190" Type="money" />
+    <Property Name="days2190to2555" Type="money" />
+    <Property Name="Above2555Days" Type="money" />
+    <Property Name="Provision" Type="money" />
+  </EntityType>
+  <EntityType Name="ARR_MonthCollectionTarget">
+    <Key>
+      <PropertyRef Name="MonthCollectioId" />
+    </Key>
+    <Property Name="MonthCollectioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="WBSElement" Type="nvarchar" MaxLength="50" />
+    <Property Name="CurrentMonth" Type="datetime" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="SubmittedBY" Type="int" />
+    <Property Name="Submittedon" Type="datetime" />
+    <Property Name="DeleteFlag" Type="varchar" MaxLength="1" />
+    <Property Name="fileno" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.ARR_MonthlyCollection' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ARR_MonthlyCollection">
+    <Key>
+      <PropertyRef Name="Collectedid" />
+    </Key>
+    <Property Name="Collectedid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="30" />
+    <Property Name="CollectedMonth" Type="datetime" />
+    <Property Name="CollectedAmount" Type="money" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="SubmittedBy" Type="int" />
+    <Property Name="SubmittedOn" Type="datetime" />
+    <Property Name="DeleteFlag" Type="varchar" MaxLength="1" />
+    <Property Name="LD" Type="money" />
+    <Property Name="TDS" Type="money" />
+    <Property Name="BC" Type="money" />
+    <Property Name="OD" Type="money" />
+    <Property Name="retention" Type="money" />
+    <Property Name="SD" Type="money" />
+    <Property Name="PBG" Type="money" />
+    <Property Name="IGST" Type="money" />
+    <Property Name="CGST" Type="money" />
+    <Property Name="SGST" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.ARR_MonthlyCollectionTracking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ARR_MonthlyCollectionTracking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrackId" Type="int" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="30" />
+    <Property Name="CollectedMonth" Type="datetime" />
+    <Property Name="CollectedAmount" Type="money" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="SubmittedBy" Type="int" />
+    <Property Name="SubmittedOn" Type="datetime" />
+    <Property Name="DeleteFlag" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.ARR_Remarks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ARR_Remarks">
+    <Key>
+      <PropertyRef Name="RemarkId" />
+    </Key>
+    <Property Name="RemarkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="25" />
+    <Property Name="WBSElement" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="ActionBy" Type="varchar" MaxLength="20" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="Updatedon" Type="datetime" />
+    <Property Name="DeleteFlag" Type="varchar" MaxLength="1" />
+    <Property Name="fileno" Type="int" />
+  </EntityType>
+  <EntityType Name="ARR_UploadHistory">
+    <Key>
+      <PropertyRef Name="FileNo" />
+    </Key>
+    <Property Name="FileNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+    <Property Name="SuccessRecords" Type="int" />
+    <Property Name="FailedRecords" Type="int" />
+    <Property Name="Status" Type="varchar(max)" />
+    <Property Name="Uploaded By" Type="nvarchar(max)" />
+    <Property Name="System-Date" Type="datetime" />
+    <Property Name="FileType" Type="nvarchar" MaxLength="100" />
+    <Property Name="FileName" Type="varchar" MaxLength="500" />
+    <Property Name="DelFlag" Type="bit" />
+  </EntityType>
+  <EntityType Name="ARR_User_Details">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpID" Type="int" Nullable="false" />
+    <Property Name="LoginID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmpName" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="GroupID" Type="int" />
+    <Property Name="Department" Type="nvarchar(max)" />
+    <Property Name="EMail" Type="nvarchar(max)" />
+    <Property Name="Office" Type="nvarchar(max)" />
+    <Property Name="Modified By" Type="nvarchar(max)" />
+    <Property Name="Modified Date" Type="datetime" />
+    <Property Name="DeleteFlag" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="10" />
+    <Property Name="AdminDashboardAccess" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.ARR_UserDescr' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ARR_UserDescr">
+    <Key>
+      <PropertyRef Name="descid" />
+    </Key>
+    <Property Name="descid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employeeno" Type="int" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="DeleteFlag" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.BankMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BankMaster">
+    <Key>
+      <PropertyRef Name="BID" />
+    </Key>
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dflag" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Logisticks1.dbo.Collection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Collection">
+          <Property Name="ID" Type="int" />
+          <Property Name="amount" Type="money" />
+          <Property Name="depositdate" Type="datetime" />
+          <Property Name="division" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="CollectionDetail">
+    <Key>
+      <PropertyRef Name="CollectionDetailId" />
+    </Key>
+    <Property Name="CollectionDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocumentNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Lineitem" Type="nvarchar" MaxLength="255" />
+    <Property Name="PostingDate" Type="datetime" />
+    <Property Name="DocumentDate" Type="datetime" />
+    <Property Name="DocumentType" Type="nvarchar" MaxLength="255" />
+    <Property Name="PostingKey" Type="nvarchar" MaxLength="255" />
+    <Property Name="Account" Type="nvarchar" MaxLength="255" />
+    <Property Name="Accountname" Type="nvarchar" MaxLength="255" />
+    <Property Name="GLAccount" Type="nvarchar" MaxLength="255" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="255" />
+    <Property Name="Amountindoccurr" Type="float" />
+    <Property Name="Documentcurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="Effexchangerate" Type="nvarchar" MaxLength="255" />
+    <Property Name="Amountinlocalcurrency" Type="float" />
+    <Property Name="LocalCurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="BusinessPlace" Type="nvarchar" MaxLength="255" />
+    <Property Name="Taxcode" Type="nvarchar" MaxLength="255" />
+    <Property Name="PurchasingDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="Item" Type="nvarchar" MaxLength="255" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="FiscalYear" Type="nvarchar" MaxLength="255" />
+    <Property Name="Invoicereference" Type="nvarchar" MaxLength="255" />
+    <Property Name="ReferenceKey" Type="nvarchar" MaxLength="255" />
+    <Property Name="Wtaxexemptamount" Type="float" />
+    <Property Name="Withhldgtaxbaseamount" Type="float" />
+    <Property Name="Withholdingtaxamnt" Type="float" />
+    <Property Name="NoName" Type="nvarchar" MaxLength="255" />
+    <Property Name="AccountType" Type="nvarchar" MaxLength="255" />
+    <Property Name="Acctsrblepledind" Type="nvarchar" MaxLength="255" />
+    <Property Name="Alternativeaccountno" Type="nvarchar" MaxLength="255" />
+    <Property Name="Amountinloccurr2" Type="float" />
+    <Property Name="Amtinloccurr3" Type="float" />
+    <Property Name="Amtinpaymentcurrency" Type="float" />
+    <Property Name="Arrearsafternetduedate" Type="float" />
+    <Property Name="Arrearsfordiscount1" Type="float" />
+    <Property Name="Asset" Type="nvarchar" MaxLength="255" />
+    <Property Name="Assignment" Type="nvarchar" MaxLength="255" />
+    <Property Name="BaseUnitofMeasure" Type="nvarchar" MaxLength="255" />
+    <Property Name="BaselinePaymentDte" Type="datetime" />
+    <Property Name="BillExchangeUsage" Type="nvarchar" MaxLength="255" />
+    <Property Name="BillingDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="Branchaccount" Type="nvarchar" MaxLength="255" />
+    <Property Name="BusinessArea" Type="nvarchar" MaxLength="255" />
+    <Property Name="CaseID" Type="nvarchar" MaxLength="255" />
+    <Property Name="CashdiscamtLC" Type="float" />
+    <Property Name="Cashdisc1due" Type="nvarchar" MaxLength="255" />
+    <Property Name="Checknumberfrom" Type="nvarchar" MaxLength="255" />
+    <Property Name="Clearedopenitemssymbol" Type="nvarchar" MaxLength="255" />
+    <Property Name="Clearedopenitemssymbol1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Clearingdate" Type="datetime" />
+    <Property Name="ClearingDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="ClearingFiscalYear" Type="nvarchar" MaxLength="255" />
+    <Property Name="Clearingitem" Type="float" />
+    <Property Name="Collectiveinvoice" Type="nvarchar" MaxLength="255" />
+    <Property Name="CompanyCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContractNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContractType" Type="nvarchar" MaxLength="255" />
+    <Property Name="CostCenter" Type="nvarchar" MaxLength="255" />
+    <Property Name="Creditcontrolarea" Type="nvarchar" MaxLength="255" />
+    <Property Name="Creditcontrolareacurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="Currentcashdiscamount" Type="float" />
+    <Property Name="Customer" Type="nvarchar" MaxLength="255" />
+    <Property Name="Days1" Type="float" />
+    <Property Name="Days2" Type="float" />
+    <Property Name="Daysnet" Type="float" />
+    <Property Name="DebitCreditInd" Type="nvarchar" MaxLength="255" />
+    <Property Name="DirectDebitPrenotification" Type="nvarchar" MaxLength="255" />
+    <Property Name="Discount1duedatesymbol" Type="nvarchar" MaxLength="255" />
+    <Property Name="Discountamount" Type="float" />
+    <Property Name="Discountbaseamount" Type="float" />
+    <Property Name="DiscountPercent1" Type="float" />
+    <Property Name="DiscountPercent2" Type="float" />
+    <Property Name="Disputeditem" Type="nvarchar" MaxLength="255" />
+    <Property Name="Docstatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="Documentarchived" Type="nvarchar" MaxLength="255" />
+    <Property Name="DocumentHeaderText" Type="nvarchar" MaxLength="255" />
+    <Property Name="Duenet" Type="nvarchar" MaxLength="255" />
+    <Property Name="DunningArea" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dunningblock" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dunningkey" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dunninglevel" Type="nvarchar" MaxLength="255" />
+    <Property Name="Fixed" Type="nvarchar" MaxLength="255" />
+    <Property Name="FlowType" Type="nvarchar" MaxLength="255" />
+    <Property Name="Followondoctype" Type="nvarchar" MaxLength="255" />
+    <Property Name="Generalledgeramount" Type="float" />
+    <Property Name="Generalledgercurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="Hedgedamount" Type="float" />
+    <Property Name="HouseBank" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instructionkey1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instructionkey2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instructionkey3" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instructionkey4" Type="nvarchar" MaxLength="255" />
+    <Property Name="Intcalcnumerator" Type="float" />
+    <Property Name="Lastdunned" Type="nvarchar" MaxLength="255" />
+    <Property Name="LineitemID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Localcurrency2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Localcurrency3" Type="nvarchar" MaxLength="255" />
+    <Property Name="Mandate" Type="nvarchar" MaxLength="255" />
+    <Property Name="MandateReference" Type="nvarchar" MaxLength="255" />
+    <Property Name="MCARunID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Negativeposting" Type="nvarchar" MaxLength="255" />
+    <Property Name="Netduedate" Type="datetime" />
+    <Property Name="Netduedatesymbol" Type="nvarchar" MaxLength="255" />
+    <Property Name="Offsettaccounttype" Type="nvarchar" MaxLength="255" />
+    <Property Name="Offsettingacctno" Type="nvarchar" MaxLength="255" />
+    <Property Name="Order" Type="nvarchar" MaxLength="255" />
+    <Property Name="Parkedby" Type="nvarchar" MaxLength="255" />
+    <Property Name="PaymentBlock" Type="nvarchar" MaxLength="255" />
+    <Property Name="Paymentdate" Type="datetime" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="255" />
+    <Property Name="Paymentorder" Type="nvarchar" MaxLength="255" />
+    <Property Name="Paymentreference" Type="nvarchar" MaxLength="255" />
+    <Property Name="Paymentsent" Type="nvarchar" MaxLength="255" />
+    <Property Name="Plant" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pmntcardlineitem" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pmntcurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pmtmethsupplement" Type="nvarchar" MaxLength="255" />
+    <Property Name="PostingPeriod" Type="nvarchar" MaxLength="255" />
+    <Property Name="Processor" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProfitCenter" Type="nvarchar" MaxLength="255" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="Reasoncode" Type="nvarchar" MaxLength="255" />
+    <Property Name="Refkeyheader2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Referencekey1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Referencekey2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Referencekey3" Type="nvarchar" MaxLength="255" />
+    <Property Name="RelatedInvIsCustomerDisputed" Type="nvarchar" MaxLength="255" />
+    <Property Name="Reverseclearing" Type="nvarchar" MaxLength="255" />
+    <Property Name="Reversedwith" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesDocumentItem" Type="nvarchar" MaxLength="255" />
+    <Property Name="ScheduleLineNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="SectionCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="Settlementrun" Type="nvarchar" MaxLength="255" />
+    <Property Name="Sortkey" Type="float" />
+    <Property Name="SpGLtranstype" Type="nvarchar" MaxLength="255" />
+    <Property Name="SpecialGLind" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="nvarchar" MaxLength="255" />
+    <Property Name="Subnumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="TermsofPayment" Type="nvarchar" MaxLength="255" />
+    <Property Name="Text" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextforPriority" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Textsexist" Type="nvarchar" MaxLength="255" />
+    <Property Name="TimeofEntry" Type="float" />
+    <Property Name="TradingPartner" Type="nvarchar" MaxLength="255" />
+    <Property Name="Transaction" Type="nvarchar" MaxLength="255" />
+    <Property Name="Username" Type="nvarchar" MaxLength="255" />
+    <Property Name="Valuatedamount" Type="float" />
+    <Property Name="Valuatedamtloccurr3" Type="float" />
+    <Property Name="Valuatedamtloccurr2" Type="float" />
+    <Property Name="Valuedate" Type="datetime" />
+    <Property Name="Vendor" Type="nvarchar" MaxLength="255" />
+    <Property Name="WBSelement" Type="nvarchar" MaxLength="255" />
+    <Property Name="Yearmonth" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Logisticks1.dbo.courierss' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="courierss">
+          <Property Name="Courierno" Type="int" />
+          <Property Name="Deliverystatus" Type="varchar" MaxLength="100" />
+          <Property Name="Deliverydate" Type="date" />
+          <Property Name="ReceivedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdationBy" Type="varchar" MaxLength="300" />
+        </EntityType>-->
+  <EntityType Name="CustMaster">
+    <Key>
+      <PropertyRef Name="CUSTID" />
+    </Key>
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="CUSTID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CUSTNAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name_2" Type="nvarchar" MaxLength="255" />
+    <Property Name="City" Type="nvarchar" MaxLength="255" />
+    <Property Name="POCODE" Type="float" />
+    <Property Name="Dflag" Type="varchar" MaxLength="1" />
+    <Property Name="YGSCUSTID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.DsoMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DsoMaster">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Division" Type="nvarchar" MaxLength="20" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReportDate" Type="datetime" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="TotalAmount" Type="money" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="Glaccount" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.excel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="excel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="place" Type="varchar" MaxLength="200" />
+    <Property Name="score" Type="float" />
+    <Property Name="age" Type="int" />
+  </EntityType>
+  <EntityType Name="FileUpload">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillingDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="ClearingDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="Clearingdate" Type="datetime" />
+    <Property Name="CompanyCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="DocumentType" Type="nvarchar" MaxLength="255" />
+    <Property Name="G/LAccount" Type="nvarchar" MaxLength="255" />
+    <Property Name="Assignment" Type="nvarchar" MaxLength="255" />
+    <Property Name="TermsofPayment" Type="nvarchar" MaxLength="255" />
+    <Property Name="Amountinlocalcurrency" Type="float" />
+    <Property Name="Account" Type="nvarchar" MaxLength="255" />
+    <Property Name="Text" Type="nvarchar" MaxLength="255" />
+    <Property Name="Accountname" Type="nvarchar" MaxLength="255" />
+    <Property Name="DocumentNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Lineitem" Type="nvarchar" MaxLength="255" />
+    <Property Name="SpecialG/LInd" Type="nvarchar" MaxLength="255" />
+    <Property Name="DocumentDate" Type="datetime" />
+    <Property Name="PostingDate" Type="datetime" />
+    <Property Name="Documentcurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="AmountInDocCurr" Type="float" />
+    <Property Name="LocalCurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="BaselinePaymentDte" Type="datetime" />
+    <Property Name="NetDueDate" Type="datetime" />
+    <Property Name="PaymentReference" Type="nvarchar" MaxLength="255" />
+    <Property Name="DocumentHeaderText" Type="nvarchar" MaxLength="255" />
+    <Property Name="Referencekey3" Type="nvarchar" MaxLength="255" />
+    <Property Name="Clearedopenitemssymbol" Type="nvarchar" MaxLength="255" />
+    <Property Name="Branchaccount" Type="nvarchar" MaxLength="255" />
+    <Property Name="Alternativeaccountno" Type="nvarchar" MaxLength="255" />
+    <Property Name="BaseUnitofMeasure" Type="nvarchar" MaxLength="255" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="255" />
+    <Property Name="Clearedopenitemssymbol1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Discount1duedatesymbol" Type="nvarchar" MaxLength="255" />
+    <Property Name="Netduedatesymbol" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="Referencekey 1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Referencekey 2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Invoicereference" Type="nvarchar" MaxLength="255" />
+    <Property Name="CostCenter" Type="nvarchar" MaxLength="255" />
+    <Property Name="Collectiveinvoice" Type="nvarchar" MaxLength="255" />
+    <Property Name="PostingKey" Type="nvarchar" MaxLength="255" />
+    <Property Name="Docstatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProfitCenter" Type="nvarchar" MaxLength="255" />
+    <Property Name="FiscalYear" Type="nvarchar" MaxLength="255" />
+    <Property Name="Year/month" Type="nvarchar" MaxLength="255" />
+    <Property Name="AccountType" Type="nvarchar" MaxLength="255" />
+    <Property Name="TimeofEntry" Type="float" />
+    <Property Name="PostingPeriod" Type="nvarchar" MaxLength="255" />
+    <Property Name="Taxcode" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesDocumentItem" Type="nvarchar" MaxLength="255" />
+    <Property Name="Debit/CreditInd" Type="nvarchar" MaxLength="255" />
+    <Property Name="SpG/LTransType" Type="nvarchar" MaxLength="255" />
+    <Property Name="PmtMethSupplement" Type="nvarchar" MaxLength="255" />
+    <Property Name="Valuedate" Type="float" />
+    <Property Name="TradingPartner" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContractNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContractType" Type="nvarchar" MaxLength="255" />
+    <Property Name="Plant" Type="nvarchar" MaxLength="255" />
+    <Property Name="BillExchangeUsage" Type="nvarchar" MaxLength="255" />
+    <Property Name="Paymentdate" Type="datetime" />
+    <Property Name="Daysnet" Type="float" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="255" />
+    <Property Name="PaymentBlock" Type="nvarchar" MaxLength="255" />
+    <Property Name="Reasoncode" Type="nvarchar" MaxLength="255" />
+    <Property Name="Currentcashdiscamount" Type="float" />
+    <Property Name="MCARunID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Effexchangerate" Type="nvarchar" MaxLength="255" />
+    <Property Name="Follow-ondoctype" Type="nvarchar" MaxLength="255" />
+    <Property Name="Generalledgercurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="Generalledgeramount" Type="float" />
+    <Property Name="DirectDebitPre-notification" Type="nvarchar" MaxLength="255" />
+    <Property Name="Negativeposting" Type="nvarchar" MaxLength="255" />
+    <Property Name="Fixed" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pmntcardlineitem" Type="nvarchar" MaxLength="255" />
+    <Property Name="SettlementRun" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreditControlArea" Type="nvarchar" MaxLength="255" />
+    <Property Name="HedgedAmount" Type="float" />
+    <Property Name="CreditControlAreaCurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="WBSelement" Type="nvarchar" MaxLength="255" />
+    <Property Name="Paymentsent" Type="nvarchar" MaxLength="255" />
+    <Property Name="BusinessPlace" Type="nvarchar" MaxLength="255" />
+    <Property Name="SectionCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pmntcurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="Paymentorder" Type="nvarchar" MaxLength="255" />
+    <Property Name="Textsexist" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="Duenet" Type="nvarchar" MaxLength="255" />
+    <Property Name="Cashdisc1due" Type="nvarchar" MaxLength="255" />
+    <Property Name="ReverseClearing" Type="nvarchar" MaxLength="255" />
+    <Property Name="Acctsrblepledind" Type="nvarchar" MaxLength="255" />
+    <Property Name="Sortkey" Type="float" />
+    <Property Name="LineitemID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Asset" Type="nvarchar" MaxLength="255" />
+    <Property Name="ClearingFiscalYear" Type="nvarchar" MaxLength="255" />
+    <Property Name="ClearingItem" Type="float" />
+    <Property Name="Processor" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="nvarchar" MaxLength="255" />
+    <Property Name="PurchasingDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="Item" Type="nvarchar" MaxLength="255" />
+    <Property Name="Transaction" Type="nvarchar" MaxLength="255" />
+    <Property Name="AssetSubnumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Order" Type="nvarchar" MaxLength="255" />
+    <Property Name="ScheduleLineNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Valuatedamount" Type="float" />
+    <Property Name="Valuatedamtloccurr2" Type="float" />
+    <Property Name="ValuatedamtlocCurr3" Type="float" />
+    <Property Name="AmountInlocCurr2" Type="float" />
+    <Property Name="Localcurrency2" Type="nvarchar" MaxLength="255" />
+    <Property Name="AmtInlocCurr3" Type="float" />
+    <Property Name="OffsettaccountType" Type="nvarchar" MaxLength="255" />
+    <Property Name="Localcurrency3" Type="nvarchar" MaxLength="255" />
+    <Property Name="BusinessArea" Type="nvarchar" MaxLength="255" />
+    <Property Name="DunningArea" Type="nvarchar" MaxLength="255" />
+    <Property Name="Lastdunned" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dunningblock" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dunninglevel" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dunningkey" Type="nvarchar" MaxLength="255" />
+    <Property Name="WithholdingTaxAmnt" Type="float" />
+    <Property Name="IntCalcNumerator" Type="float" />
+    <Property Name="W/TaxExemptAmount" Type="float" />
+    <Property Name="WithhldgTaxBaseAmount" Type="float" />
+    <Property Name="DiscountBaseAmount" Type="float" />
+    <Property Name="DiscountAmount" Type="float" />
+    <Property Name="OffsettingAcctNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="RelatedInvIsCustomer-Disputed" Type="nvarchar" MaxLength="255" />
+    <Property Name="CashDiscamtLC" Type="float" />
+    <Property Name="FlowType" Type="nvarchar" MaxLength="255" />
+    <Property Name="ArrearsForDiscount1" Type="float" />
+    <Property Name="ArrearsAfterNetDueDate" Type="float" />
+    <Property Name="MandateReference" Type="nvarchar" MaxLength="255" />
+    <Property Name="DiscountPercent1" Type="float" />
+    <Property Name="Days1" Type="float" />
+    <Property Name="RefKeyHeader2" Type="nvarchar" MaxLength="255" />
+    <Property Name="DiscountPercent2" Type="float" />
+    <Property Name="Days2" Type="float" />
+    <Property Name="DisputedItem" Type="nvarchar" MaxLength="255" />
+    <Property Name="DocumentArchived" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instructionkey1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instructionkey2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instructionkey3" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instructionkey4" Type="nvarchar" MaxLength="255" />
+    <Property Name="AmtiInPaymentCurrency" Type="float" />
+    <Property Name="CaseID" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextForPriority" Type="nvarchar" MaxLength="255" />
+    <Property Name="Mandate" Type="nvarchar" MaxLength="255" />
+    <Property Name="NoName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Reversedwith" Type="nvarchar" MaxLength="255" />
+    <Property Name="HouseBank" Type="nvarchar" MaxLength="255" />
+    <Property Name="Customer" Type="nvarchar" MaxLength="255" />
+    <Property Name="Vendor" Type="nvarchar" MaxLength="255" />
+    <Property Name="CheckNumberFrom" Type="nvarchar" MaxLength="255" />
+    <Property Name="ReferenceKey" Type="nvarchar" MaxLength="255" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="ParkedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name1" Type="nvarchar" MaxLength="255" />
+    <Property Name="FileNo" Type="int" />
+  </EntityType>
+  <EntityType Name="GroupDetails">
+    <Key>
+      <PropertyRef Name="GroupID" />
+    </Key>
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="Group Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Group Description" Type="nvarchar(max)" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="DeleteFlag" Type="char" MaxLength="1" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" />
+    <Property Name="ModifiedBy" Type="nvarchar(max)" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="NEWDEPENTRY">
+    <Key>
+      <PropertyRef Name="EID" />
+    </Key>
+    <Property Name="EID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="DEPID" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="CUSTID" Type="int" />
+    <Property Name="CUSTNAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="AMOUNT" Type="money" />
+    <Property Name="INVNO" Type="varchar" MaxLength="50" />
+    <Property Name="INVDETAILS" Type="nvarchar" MaxLength="255" />
+    <Property Name="CHQNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CHQDATE" Type="varchar" MaxLength="50" />
+    <Property Name="CLEARING" Type="varchar" MaxLength="50" />
+    <Property Name="DIVISION" Type="varchar" MaxLength="50" />
+    <Property Name="SALES" Type="varchar" MaxLength="10" />
+    <Property Name="PMGH" Type="varchar" MaxLength="50" />
+    <Property Name="JOBCODE" Type="nvarchar" MaxLength="255" />
+    <Property Name="LD" Type="money" />
+    <Property Name="TDS" Type="money" />
+    <Property Name="BC" Type="money" />
+    <Property Name="OD" Type="money" />
+    <Property Name="JOB" Type="varchar" MaxLength="50" />
+    <Property Name="PayType" Type="varchar" MaxLength="50" />
+    <Property Name="DFLAG" Type="varchar" MaxLength="50" />
+    <Property Name="CLEAR" Type="varchar" MaxLength="1" />
+    <Property Name="NONADJUST" Type="varchar" MaxLength="1" />
+    <Property Name="ADJUST" Type="varchar" MaxLength="1" />
+    <Property Name="ERROR_MSG" Type="nvarchar" MaxLength="250" />
+    <Property Name="EXCESS" Type="money" />
+    <Property Name="PENALTY" Type="money" />
+    <Property Name="PBG" Type="money" />
+    <Property Name="RETENTION" Type="money" />
+    <Property Name="SEC_DEPOSIT" Type="money" />
+    <Property Name="IGST" Type="money" />
+    <Property Name="CGST" Type="money" />
+    <Property Name="SGST" Type="money" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="NEWDEPMAIN">
+    <Key>
+      <PropertyRef Name="DEPID" />
+    </Key>
+    <Property Name="DEPID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="DEPOSITNO" Type="varchar" MaxLength="50" />
+    <Property Name="EMPNO" Type="varchar" MaxLength="50" />
+    <Property Name="DEPOSITDATE" Type="datetime" />
+    <Property Name="CURDATE" Type="datetime" />
+    <Property Name="REGID" Type="int" Nullable="false" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="DFLAG" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID" Type="numeric" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="NewMenus">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="int" Nullable="false" />
+    <Property Name="ParentMenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Url" Type="nvarchar(max)" />
+    <Property Name="CssFont" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Logisticks1.dbo.reading' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="reading">
+          <Property Name="region" Type="varchar" MaxLength="100" />
+          <Property Name="Population" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.RegMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RegMaster">
+    <Key>
+      <PropertyRef Name="RegID" />
+      <PropertyRef Name="Dflag" />
+    </Key>
+    <Property Name="RegID" Type="int" Nullable="false" />
+    <Property Name="Region" Type="varchar" MaxLength="15" />
+    <Property Name="Region_short" Type="varchar" MaxLength="3" />
+    <Property Name="CName" Type="varchar" MaxLength="1" />
+    <Property Name="Dflag" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Logisticks1.dbo.sample' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="sample">
+          <Property Name="Descr" Type="varchar" MaxLength="2000" />
+          <Property Name="Typee" Type="varchar" MaxLength="2000" />
+          <Property Name="loadingno" Type="varchar" MaxLength="2000" />
+          <Property Name="docketno" Type="varchar" MaxLength="2000" />
+          <Property Name="DeliveryStatus" Type="varchar" MaxLength="2000" />
+          <Property Name="DeliveryDate" Type="varchar" MaxLength="2000" />
+          <Property Name="ReceivedBy" Type="varchar" MaxLength="2000" />
+          <Property Name="Updatedby" Type="varchar" MaxLength="2000" />
+          <Property Name="Fromm" Type="varchar" MaxLength="2000" />
+          <Property Name="Too" Type="varchar" MaxLength="2000" />
+          <Property Name="BookingDate" Type="varchar" MaxLength="2000" />
+          <Property Name="ExpectedDeliveryDate" Type="varchar" MaxLength="2000" />
+          <Property Name="FromStation" Type="varchar" MaxLength="2000" />
+          <Property Name="ToStation" Type="varchar" MaxLength="2000" />
+          <Property Name="DespatchDate" Type="varchar" MaxLength="2000" />
+          <Property Name="ArrivalDate" Type="varchar" MaxLength="2000" />
+        </EntityType>-->
+  <EntityType Name="SO_Detail_Upload">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Projectdefinitionlevel0" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesOffice" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesDocumentNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesOrderItemNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="ConfirmQuantity" Type="float" />
+    <Property Name="Material" Type="nvarchar" MaxLength="255" />
+    <Property Name="MaterialDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="QuotationNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="QuotationItemNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="Quotationvalidto" Type="nvarchar" MaxLength="255" />
+    <Property Name="BillingDocumentNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesDocumentType" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextSalesDocumentType" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesOrganization" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextSalesOrganization" Type="nvarchar" MaxLength="255" />
+    <Property Name="DistributionChannel" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextDistributionChannel" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextSalesOffice" Type="nvarchar" MaxLength="255" />
+    <Property Name="Sales Group" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextSalesGroup" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesFU" Type="nvarchar" MaxLength="255" />
+    <Property Name="POnumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="POdate" Type="datetime" />
+    <Property Name="Requesteddelivdate" Type="datetime" />
+    <Property Name="DocumentDatedatereceivedsent" Type="datetime" />
+    <Property Name="Version" Type="nvarchar" MaxLength="255" />
+    <Property Name="Orderreason" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextOrderreason" Type="nvarchar" MaxLength="255" />
+    <Property Name="Netvalueoftheorder" Type="float" />
+    <Property Name="SDdocumentcurrency" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pricingdate" Type="datetime" />
+    <Property Name="ConditionGroup1" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextConditionGroup1" Type="nvarchar" MaxLength="255" />
+    <Property Name="DeliveryBlockStatusH" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextDeliveryBlockStatusH" Type="nvarchar" MaxLength="255" />
+    <Property Name="BillingBlockStatusH" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextBillingBlockStatusH" Type="nvarchar" MaxLength="255" />
+    <Property Name="Soldtoparty" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSoldtoparty" Type="nvarchar" MaxLength="255" />
+    <Property Name="Payer" Type="nvarchar" MaxLength="255" />
+    <Property Name="NamePayer" Type="nvarchar" MaxLength="255" />
+    <Property Name="Billtoparty" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameBillingtoparty" Type="nvarchar" MaxLength="255" />
+    <Property Name="Shiptoparty" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameShiptoparty" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContactShip" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name1ContactShip" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name2ContactShip" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name3ContactShip" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name4ContactShip" Type="nvarchar" MaxLength="255" />
+    <Property Name="TELNUMBERContactShip" Type="nvarchar" MaxLength="255" />
+    <Property Name="ForwardingAgent" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameForwardingAgent" Type="nvarchar" MaxLength="255" />
+    <Property Name="Consignee" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameConsignee" Type="nvarchar" MaxLength="255" />
+    <Property Name="EndUser" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameEndUser" Type="nvarchar" MaxLength="255" />
+    <Property Name="Soldtoparty2" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSoldtoparty2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Soldtoparty3" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSoldtoparty3" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesPerson" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSalesPerson" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesEngineer" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSalesEngineer" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContentsChecker" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name: Contents Checker" Type="nvarchar" MaxLength="255" />
+    <Property Name="Handledby" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameHandledby" Type="nvarchar" MaxLength="255" />
+    <Property Name="Approver" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameApprover" Type="nvarchar" MaxLength="255" />
+    <Property Name="ApprovalStatusChangedby" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameApprovalStatusChangedby" Type="nvarchar" MaxLength="255" />
+    <Property Name="Exporter" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameExporter" Type="nvarchar" MaxLength="255" />
+    <Property Name="Importer" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameImporter" Type="nvarchar" MaxLength="255" />
+    <Property Name="SDUserStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextSDUserStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="OrderapprovalNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="E/UIndustrySegmentSD" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextE/UIndustrySegment" Type="nvarchar" MaxLength="255" />
+    <Property Name="OpportunityID" Type="nvarchar" MaxLength="255" />
+    <Property Name="SecurityExportControlItem" Type="nvarchar" MaxLength="255" />
+    <Property Name="ExportapprovalNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="Exportflag" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerGroup" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextCustomergroup" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Collectivenumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Shiptoparty'sPONumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="CostCenter" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextCostCenter" Type="nvarchar" MaxLength="255" />
+    <Property Name="Customergroup4" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextCustomergroup4" Type="nvarchar" MaxLength="255" />
+    <Property Name="SAPUser" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSAPUser" Type="nvarchar" MaxLength="255" />
+    <Property Name="Createdon" Type="datetime" />
+    <Property Name="Changedon" Type="datetime" />
+    <Property Name="FromLegacyCustGroup5" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextFromLegacyCustGroup5" Type="nvarchar" MaxLength="255" />
+    <Property Name="SerialSalesdocumentitemNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="ItemCateogry" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextItemcategory" Type="nvarchar" MaxLength="255" />
+    <Property Name="Msg#onOrderackbody" Type="nvarchar" MaxLength="255" />
+    <Property Name="Producthierarchy" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextProducthierarchy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Cumulativeorderquantityinsalesunits" Type="float" />
+    <Property Name="Salesunit" Type="nvarchar" MaxLength="255" />
+    <Property Name="Netvalueoftheorderitem" Type="float" />
+    <Property Name="Netprice" Type="float" />
+    <Property Name="per" Type="float" />
+    <Property Name="unitofmeasure" Type="nvarchar" MaxLength="255" />
+    <Property Name="StandardPrice" Type="float" />
+    <Property Name="NameSAFReceiver2" Type="nvarchar" MaxLength="255" />
+    <Property Name="DomesticPriceJapan" Type="float" />
+    <Property Name="DomesticPriceCurrencyJapan" Type="nvarchar" MaxLength="255" />
+    <Property Name="DiscountPercentage" Type="float" />
+    <Property Name="Percentage" Type="nvarchar" MaxLength="255" />
+    <Property Name="SAFReceiver1" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSAFReceiver1" Type="nvarchar" MaxLength="255" />
+    <Property Name="SAFAmount1" Type="float" />
+    <Property Name="SAFReceiver2" Type="nvarchar" MaxLength="255" />
+    <Property Name="SAFAmount2" Type="float" />
+    <Property Name="SAFReceiver3" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSAFReceiver3" Type="nvarchar" MaxLength="255" />
+    <Property Name="SAFAmount3" Type="float" />
+    <Property Name="SAFReceiver4" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSAFReceiver4" Type="nvarchar" MaxLength="255" />
+    <Property Name="SAFAmount4" Type="float" />
+    <Property Name="SAFReceiver5" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameSAFReceiver5" Type="nvarchar" MaxLength="255" />
+    <Property Name="SAFAmount5" Type="float" />
+    <Property Name="RSPSAF" Type="nvarchar" MaxLength="255" />
+    <Property Name="TransferFactorSAF" Type="nvarchar" MaxLength="255" />
+    <Property Name="TransferPriceSAF" Type="nvarchar" MaxLength="255" />
+    <Property Name="STFSAF" Type="nvarchar" MaxLength="255" />
+    <Property Name="STPSAF" Type="nvarchar" MaxLength="255" />
+    <Property Name="HandlingChargeSAF" Type="nvarchar" MaxLength="255" />
+    <Property Name="CalculatedSAF" Type="nvarchar" MaxLength="255" />
+    <Property Name="CommissionReceiver1" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameCommissionReceiver1" Type="nvarchar" MaxLength="255" />
+    <Property Name="CommissionAmount1" Type="float" />
+    <Property Name="CommissionReceiver2" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameCommissionReceiver2" Type="nvarchar" MaxLength="255" />
+    <Property Name="CommissionAmount2" Type="float" />
+    <Property Name="CommissionReceiver3" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameCommissionReceiver3" Type="nvarchar" MaxLength="255" />
+    <Property Name="CommissionAmount3" Type="float" />
+    <Property Name="CommissionReceiver4" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameCommissionReceiver4" Type="nvarchar" MaxLength="255" />
+    <Property Name="CommissionAmount4" Type="float" />
+    <Property Name="CommissionReceiver5" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameCommissionReceiver5" Type="nvarchar" MaxLength="255" />
+    <Property Name="CommissionAmount5" Type="float" />
+    <Property Name="O/IContributor1" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameO/IContributor1" Type="nvarchar" MaxLength="255" />
+    <Property Name="O/IContributorAmount1" Type="float" />
+    <Property Name="O/IContributor2" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameO/IContributor2" Type="nvarchar" MaxLength="255" />
+    <Property Name="O/IContributorAmount2" Type="float" />
+    <Property Name="O/IContributor3" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameO/IContributor3" Type="nvarchar" MaxLength="255" />
+    <Property Name="O/IContributorAmount3" Type="float" />
+    <Property Name="O/IContributor4" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameO/IContributor4" Type="nvarchar" MaxLength="255" />
+    <Property Name="O/IContributorAmount4" Type="float" />
+    <Property Name="O/IContributor5" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameO/IContributor5" Type="nvarchar" MaxLength="255" />
+    <Property Name="O/IContributorAmount5" Type="float" />
+    <Property Name="SSFAmount" Type="float" />
+    <Property Name="TargetPrice" Type="float" />
+    <Property Name="TransferPrice" Type="float" />
+    <Property Name="GrossProfit" Type="float" />
+    <Property Name="GrossProfitRate%" Type="nvarchar" MaxLength="255" />
+    <Property Name="Rep'sSellingPricetoSoldtoparty2" Type="float" />
+    <Property Name="100MarginRate%" Type="nvarchar" MaxLength="255" />
+    <Property Name="Percentage1" Type="nvarchar" MaxLength="255" />
+    <Property Name="TransferPriceSAlloc" Type="float" />
+    <Property Name="DirectPOtoMFGFlag" Type="nvarchar" MaxLength="255" />
+    <Property Name="Reasonforrejection" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextReasonforrejection" Type="nvarchar" MaxLength="255" />
+    <Property Name="DeliveryBlockStatusI" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextDeliveryBlockStatusI" Type="nvarchar" MaxLength="255" />
+    <Property Name="BillingBlockStatusI" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextBillingBlockStatusI" Type="nvarchar" MaxLength="255" />
+    <Property Name="MScode" Type="nvarchar" MaxLength="255" />
+    <Property Name="MaterialGroup1" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextMaterialGroup1" Type="nvarchar" MaxLength="255" />
+    <Property Name="LinkageNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="UsageItem" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextUsageItem" Type="nvarchar" MaxLength="255" />
+    <Property Name="POItemNoSoldto" Type="nvarchar" MaxLength="255" />
+    <Property Name="Taxclassific1" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextTaxclassific1" Type="nvarchar" MaxLength="255" />
+    <Property Name="TOKUCHUNoSell" Type="nvarchar" MaxLength="255" />
+    <Property Name="TOKUCHUNoforpriceSell" Type="nvarchar" MaxLength="255" />
+    <Property Name="TOKUCHUNoPur" Type="nvarchar" MaxLength="255" />
+    <Property Name="TOKUCHUNoforpricePur" Type="nvarchar" MaxLength="255" />
+    <Property Name="SSTPApprovalNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="AWC1" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextAWC1" Type="nvarchar" MaxLength="255" />
+    <Property Name="AWC2" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextAWC2" Type="nvarchar" MaxLength="255" />
+    <Property Name="AWC3" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextAWC3" Type="nvarchar" MaxLength="255" />
+    <Property Name="AWC4" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextAWC4" Type="nvarchar" MaxLength="255" />
+    <Property Name="AWC5" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextAWC5" Type="nvarchar" MaxLength="255" />
+    <Property Name="OrderInstructionNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="QICDeliverystyle" Type="nvarchar" MaxLength="255" />
+    <Property Name="DocumentItemNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="CombinedMSCodeControlNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="CombinedMSCodeIndicator" Type="nvarchar" MaxLength="255" />
+    <Property Name="InquiryID" Type="nvarchar" MaxLength="255" />
+    <Property Name="ServiceOrderNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="YourReference" Type="nvarchar" MaxLength="255" />
+    <Property Name="YourReferenceShiptoparty" Type="nvarchar" MaxLength="255" />
+    <Property Name="ItemPODateSoldtoparty" Type="datetime" />
+    <Property Name="CustomerMaterial" Type="nvarchar" MaxLength="255" />
+    <Property Name="FirstDateFirstLine" Type="datetime" />
+    <Property Name="ShippingPoint" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextShippingPoint" Type="nvarchar" MaxLength="255" />
+    <Property Name="Incoterms1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Incoterms2" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesTurnoverNo" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesTurnoverDatePlan" Type="datetime" />
+    <Property Name="SalesTurnoverDateActual" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjecttextLevel0" Type="nvarchar" MaxLength="255" />
+    <Property Name="WBSElementLevel2" Type="nvarchar" MaxLength="255" />
+    <Property Name="WBStextLevel2" Type="nvarchar" MaxLength="255" />
+    <Property Name="WBSSystemstatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextWBSSystemstatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="WBSUserStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextWBSUserstatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="E/UindustrySegmentPS" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextE/UindustrySegmentPS" Type="nvarchar" MaxLength="255" />
+    <Property Name="E/USiteCountry" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextE/USiteCountry" Type="nvarchar" MaxLength="255" />
+    <Property Name="E/USiteArea" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextE/USiteArea" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectCategory" Type="nvarchar" MaxLength="255" />
+    <Property Name="TextProjectCategory" Type="nvarchar" MaxLength="255" />
+    <Property Name="OverallStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="QuotationStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="SalesOrderStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="DownPaymentStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="DeliveryStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="DeliveryQuantityinsalesunit" Type="float" />
+    <Property Name="SalesUnit1" Type="nvarchar" MaxLength="255" />
+    <Property Name="GoodsIssueStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="BillingStatusItem" Type="nvarchar" MaxLength="255" />
+    <Property Name="BilledAmount (Item)" Type="float" />
+    <Property Name="Currency" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Logisticks1.dbo.try1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="try1">
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Place" Type="varchar" MaxLength="200" />
+          <Property Name="score" Type="float" />
+          <Property Name="age" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.UploadHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UploadHistory">
+    <Key>
+      <PropertyRef Name="FileNo" />
+      <PropertyRef Name="FileName" />
+      <PropertyRef Name="SuccessRecords" />
+      <PropertyRef Name="FailedRecords" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="FileNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SuccessRecords" Type="int" Nullable="false" />
+    <Property Name="FailedRecords" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar(max)" Nullable="false" />
+    <Property Name="Uploaded By" Type="nvarchar(max)" />
+    <Property Name="System-Date" Type="datetime" />
+    <Property Name="FileType" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="User_Details">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpID" Type="int" Nullable="false" />
+    <Property Name="LoginID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmpName" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="GroupID" Type="int" />
+    <Property Name="Department" Type="nvarchar(max)" />
+    <Property Name="EMail" Type="nvarchar(max)" />
+    <Property Name="Office" Type="nvarchar(max)" />
+    <Property Name="Modified By" Type="nvarchar(max)" />
+    <Property Name="Modified Date" Type="datetime" />
+    <Property Name="DeleteFlag" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserDetails">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="First Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Last Name" Type="nvarchar(max)" />
+    <Property Name="Login Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="usr_Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="15" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="GroupID" Type="int" />
+    <Property Name="Modified By" Type="nvarchar(max)" />
+    <Property Name="Modified Date" Type="datetime" />
+    <Property Name="usr_Title" Type="varchar" MaxLength="20" />
+    <Property Name="usr_Mobile" Type="bigint" />
+    <Property Name="usr_Phone" Type="bigint" />
+    <Property Name="usr_Email" Type="nvarchar(max)" />
+    <Property Name="Address1" Type="nvarchar(max)" />
+    <Property Name="Address2" Type="nvarchar(max)" />
+    <Property Name="DeleteFlag" Type="char" MaxLength="1" />
+    <Property Name="EmpID" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="EmpName" Type="nvarchar(max)" />
+    <Property Name="Department" Type="nvarchar(max)" />
+    <Property Name="EMail" Type="nvarchar(max)" />
+    <Property Name="Office" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.arrbureport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="arrbureport">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Division" Type="nvarchar" MaxLength="20" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="salesoffice" Type="nvarchar" MaxLength="5" />
+    <Property Name="CustomerCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="docno" Type="nvarchar" MaxLength="20" />
+    <Property Name="postingdate" Type="date" />
+    <Property Name="YilSono" Type="varchar" MaxLength="20" />
+    <Property Name="pono" Type="nvarchar" MaxLength="100" />
+    <Property Name="wbselement" Type="nvarchar" MaxLength="50" />
+    <Property Name="wbstext" Type="nvarchar" MaxLength="200" />
+    <Property Name="Projectmanager" Type="nvarchar" MaxLength="100" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="invoicedate" Type="date" />
+    <Property Name="docinvoiceamount" Type="money" />
+    <Property Name="invoiceCurrancy" Type="nvarchar" MaxLength="3" />
+    <Property Name="inrinvoiceamount" Type="money" />
+    <Property Name="DocOutstandingAmount" Type="money" />
+    <Property Name="DocOSCurrency" Type="varchar" MaxLength="4" />
+    <Property Name="outstandingamount" Type="money" />
+    <Property Name="CollectedAmount" Type="money" />
+    <Property Name="tdsamount" Type="money" />
+    <Property Name="retentionamount" Type="money" />
+    <Property Name="notdue" Type="money" />
+    <Property Name="days1to30" Type="money" />
+    <Property Name="Deleteflag" Type="varchar" MaxLength="1" />
+    <Property Name="osDate" Type="date" />
+    <Property Name="days31to60" Type="money" />
+    <Property Name="days61to90" Type="money" />
+    <Property Name="days91to180" Type="money" />
+    <Property Name="days181to365" Type="money" />
+    <Property Name="days366to730" Type="money" />
+    <Property Name="days730to1095" Type="money" />
+    <Property Name="Provision" Type="money" />
+    <Property Name="ActionBy" Type="varchar" MaxLength="20" />
+    <Property Name="Remarks" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.Collection_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Collection_View">
+    <Key>
+      <PropertyRef Name="EID" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="REGID" />
+      <PropertyRef Name="BID" />
+      <PropertyRef Name="Expr3" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="EID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="DEPID" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="CUSTID" Type="int" />
+    <Property Name="CUSTNAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="AMOUNT" Type="money" />
+    <Property Name="INVNO" Type="varchar" MaxLength="50" />
+    <Property Name="INVDETAILS" Type="nvarchar" MaxLength="255" />
+    <Property Name="CHQNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CHQDATE" Type="varchar" MaxLength="50" />
+    <Property Name="CLEARING" Type="varchar" MaxLength="50" />
+    <Property Name="DIVISION" Type="varchar" MaxLength="50" />
+    <Property Name="SALES" Type="varchar" MaxLength="10" />
+    <Property Name="PMGH" Type="varchar" MaxLength="50" />
+    <Property Name="JOBCODE" Type="nvarchar" MaxLength="255" />
+    <Property Name="LD" Type="money" />
+    <Property Name="TDS" Type="money" />
+    <Property Name="BC" Type="money" />
+    <Property Name="OD" Type="money" />
+    <Property Name="JOB" Type="varchar" MaxLength="50" />
+    <Property Name="PayType" Type="varchar" MaxLength="50" />
+    <Property Name="DFLAG" Type="varchar" MaxLength="50" />
+    <Property Name="CLEAR" Type="varchar" MaxLength="1" />
+    <Property Name="NONADJUST" Type="varchar" MaxLength="1" />
+    <Property Name="ADJUST" Type="varchar" MaxLength="1" />
+    <Property Name="ERROR_MSG" Type="nvarchar" MaxLength="250" />
+    <Property Name="EXCESS" Type="money" />
+    <Property Name="PENALTY" Type="money" />
+    <Property Name="PBG" Type="money" />
+    <Property Name="RETENTION" Type="money" />
+    <Property Name="SEC_DEPOSIT" Type="money" />
+    <Property Name="IGST" Type="money" />
+    <Property Name="CGST" Type="money" />
+    <Property Name="SGST" Type="money" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+    <Property Name="Expr2" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="DEPOSITNO" Type="varchar" MaxLength="50" />
+    <Property Name="EMPNO" Type="varchar" MaxLength="50" />
+    <Property Name="DEPOSITDATE" Type="datetime" />
+    <Property Name="CURDATE" Type="datetime" />
+    <Property Name="REGID" Type="int" Nullable="false" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="Expr3" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="Region" Type="varchar" MaxLength="15" />
+    <Property Name="Region_short" Type="varchar" MaxLength="3" />
+    <Property Name="CName" Type="varchar" MaxLength="1" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Logisticks1.dbo.dsoviewmaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="dsoviewmaster">
+          <Property Name="region" Type="nvarchar" MaxLength="50" />
+          <Property Name="reportdate" Type="datetime" />
+          <Property Name="CECI" Type="money" />
+          <Property Name="PCI" Type="money" />
+          <Property Name="PCI ANA" Type="money" />
+          <Property Name="SERVICE" Type="money" />
+          <Property Name="SOLUTION" Type="money" />
+          <Property Name="SYSTEMS" Type="money" />
+          <Property Name="TAS" Type="money" />
+          <Property Name="TMI" Type="money" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Logisticks1.dbo.osreportBU' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="osreportBU">
+          <Property Name="id" Type="int" />
+          <Property Name="sono" Type="nvarchar" MaxLength="12" />
+          <Property Name="Division" Type="nvarchar" MaxLength="20" />
+          <Property Name="docno" Type="nvarchar" MaxLength="20" />
+          <Property Name="pono" Type="nvarchar" MaxLength="100" />
+          <Property Name="region" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="250" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="projectmgrid" Type="nvarchar" MaxLength="50" />
+          <Property Name="inrinvoiceamount" Type="money" />
+          <Property Name="CollectedAmount" Type="money" />
+          <Property Name="outstandingamount" Type="money" />
+          <Property Name="tdsamount" Type="money" />
+          <Property Name="retentionamount" Type="money" />
+          <Property Name="Deleteflag" Type="varchar" MaxLength="1" />
+          <Property Name="notdue" Type="money" />
+          <Property Name="days1to30" Type="money" />
+          <Property Name="days31to60" Type="money" />
+          <Property Name="days61to90" Type="money" />
+          <Property Name="days91to180" Type="money" />
+          <Property Name="days181to365" Type="money" />
+          <Property Name="days366to730" Type="money" />
+          <Property Name="days730to1095" Type="money" />
+          <Property Name="osDate" Type="date" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logisticks1.dbo.sampleview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sampleview">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Division" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__GroupDeta__RoleI__1332DBDC">
+    <End Role="AccessRoles" Type="Self.AccessRoles" Multiplicity="1" />
+    <End Role="GroupDetails" Type="Self.GroupDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessRoles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="GroupDetails">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileUpload_ARR_UploadHistory">
+    <End Role="ARR_UploadHistory" Type="Self.ARR_UploadHistory" Multiplicity="0..1" />
+    <End Role="FileUpload" Type="Self.FileUpload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ARR_UploadHistory">
+        <PropertyRef Name="FileNo" />
+      </Principal>
+      <Dependent Role="FileUpload">
+        <PropertyRef Name="FileNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetTokenizeValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="strCSVString" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ID" Type="varchar" MaxLength="2000" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="Sp_ARRGenerateSummaryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetMenuData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="splitstring" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stringToSplit" Type="varchar(max)" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="SqlQueryNotificationStoredProcedure_0c0fc1cf_2cf9_4ed8_8f41_873133382495" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-0c0fc1cf-2cf9-4ed8-8f41-873133382495" />
+  <Function Name="Upload_History" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_AdminDashboard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_AdminDashboard_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="Month" Type="int" Mode="In" />
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="USP_AdminDashboard_V3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_Aging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="EmployeeNo" Type="int" Mode="In" />
+    <Parameter Name="Division" Type="nvarchar" Mode="In" />
+    <Parameter Name="Region" Type="nvarchar" Mode="In" />
+    <Parameter Name="Month" Type="int" Mode="In" />
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="GDivision" Type="nvarchar" Mode="In" />
+    <Parameter Name="GRegion" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_ARDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ARR_ErrorLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="LogID" Type="int" Mode="In" />
+    <Parameter Name="PageName" Type="varchar" Mode="In" />
+    <Parameter Name="MethodName" Type="varchar" Mode="In" />
+    <Parameter Name="ErrorMessage" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InnerException" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StackTrace" Type="varchar(max)" Mode="In" />
+    <Parameter Name="SessionUser" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_ARR_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Region" Type="nvarchar" Mode="In" />
+    <Parameter Name="Division" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="RegionS" Type="varchar" Mode="In" />
+    <Parameter Name="DivisionS" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectManager" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectManagerID" Type="int" Mode="In" />
+    <Parameter Name="Month" Type="nvarchar" Mode="In" />
+    <Parameter Name="Year" Type="nvarchar" Mode="In" />
+    <Parameter Name="Employeeno" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Usp_Dsodivisiondata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="region" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_Dsoregiondata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="division" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_FileUpload" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Region" Type="nvarchar" Mode="In" />
+    <Parameter Name="Division" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="RegionS" Type="varchar" Mode="In" />
+    <Parameter Name="DivisionS" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectManager" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectManagerID" Type="int" Mode="In" />
+    <Parameter Name="Month" Type="nvarchar" Mode="In" />
+    <Parameter Name="Year" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_GenerateReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Region" Type="nvarchar" Mode="In" />
+    <Parameter Name="Division" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="RegionS" Type="varchar" Mode="In" />
+    <Parameter Name="DivisionS" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectManager" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectManagerID" Type="int" Mode="In" />
+    <Parameter Name="Month" Type="nvarchar" Mode="In" />
+    <Parameter Name="Year" Type="nvarchar" Mode="In" />
+    <Parameter Name="SelectedValue" Type="nvarchar" Mode="In" />
+    <Parameter Name="txtSaleOrderNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="txtDocNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="txtInvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="txtCustpono" Type="nvarchar" Mode="In" />
+    <Parameter Name="txtProjectId" Type="nvarchar" Mode="In" />
+    <Parameter Name="txtCustomerCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="AgingCritria" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_GetRegionDivisionPmCustomerName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="Employeeno" Type="int" Mode="In" />
+    <Parameter Name="EmpID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_LastOneYearCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="DEPOSITDATE" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmployeeNo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_LastSixMonthCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_LastSixMonthCollection_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="EmployeeNo" Type="int" Mode="In" />
+    <Parameter Name="Division" Type="nvarchar" Mode="In" />
+    <Parameter Name="Region" Type="nvarchar" Mode="In" />
+    <Parameter Name="Month" Type="int" Mode="In" />
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="GDivision" Type="nvarchar" Mode="In" />
+    <Parameter Name="GRegion" Type="nvarchar" Mode="In" />
+    <Parameter Name="SelectedMonth" Type="int" Mode="In" />
+    <Parameter Name="LastSixMonthDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="USP_Menu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_MonthlyCashIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="Division" Type="nvarchar" Mode="In" />
+    <Parameter Name="Month" Type="nvarchar" Mode="In" />
+    <Parameter Name="Year" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_PieChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="Division" Type="nvarchar" Mode="In" />
+    <Parameter Name="Month" Type="nvarchar" Mode="In" />
+    <Parameter Name="Year" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="Type" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_PieChart_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="Division" Type="nvarchar" Mode="In" />
+    <Parameter Name="Month" Type="nvarchar" Mode="In" />
+    <Parameter Name="Year" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="Type" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Logisticks1ModelStoreContainer">
+    <EntitySet Name="AccessRoleItems" EntityType="Self.AccessRoleItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccessRoles" EntityType="Self.AccessRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ARDetail" EntityType="Self.ARDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ARR_ErrorLog" EntityType="Self.ARR_ErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ARR_Master" EntityType="Self.ARR_Master" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ARR_MonthCollectionTarget" EntityType="Self.ARR_MonthCollectionTarget" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ARR_UploadHistory" EntityType="Self.ARR_UploadHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ARR_User_Details" EntityType="Self.ARR_User_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CollectionDetail" EntityType="Self.CollectionDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustMaster" EntityType="Self.CustMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FileUpload" EntityType="Self.FileUpload" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupDetails" EntityType="Self.GroupDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NEWDEPENTRY" EntityType="Self.NEWDEPENTRY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NEWDEPMAIN" EntityType="Self.NEWDEPMAIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewMenus" EntityType="Self.NewMenus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SO_Detail_Upload" EntityType="Self.SO_Detail_Upload" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Details" EntityType="Self.User_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AgingOrder" EntityType="Self.AgingOrder" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AgingOrder].[orderid] AS [orderid], 
+    [AgingOrder].[OrderName] AS [OrderName], 
+    [AgingOrder].[DisplayOrder] AS [DisplayOrder]
+    FROM [dbo].[AgingOrder] AS [AgingOrder]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ARR_MonthlyCollection" EntityType="Self.ARR_MonthlyCollection" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ARR_MonthlyCollection].[Collectedid] AS [Collectedid], 
+    [ARR_MonthlyCollection].[InvoiceNo] AS [InvoiceNo], 
+    [ARR_MonthlyCollection].[CollectedMonth] AS [CollectedMonth], 
+    [ARR_MonthlyCollection].[CollectedAmount] AS [CollectedAmount], 
+    [ARR_MonthlyCollection].[Remarks] AS [Remarks], 
+    [ARR_MonthlyCollection].[SubmittedBy] AS [SubmittedBy], 
+    [ARR_MonthlyCollection].[SubmittedOn] AS [SubmittedOn], 
+    [ARR_MonthlyCollection].[DeleteFlag] AS [DeleteFlag], 
+    [ARR_MonthlyCollection].[LD] AS [LD], 
+    [ARR_MonthlyCollection].[TDS] AS [TDS], 
+    [ARR_MonthlyCollection].[BC] AS [BC], 
+    [ARR_MonthlyCollection].[OD] AS [OD], 
+    [ARR_MonthlyCollection].[retention] AS [retention], 
+    [ARR_MonthlyCollection].[SD] AS [SD], 
+    [ARR_MonthlyCollection].[PBG] AS [PBG], 
+    [ARR_MonthlyCollection].[IGST] AS [IGST], 
+    [ARR_MonthlyCollection].[CGST] AS [CGST], 
+    [ARR_MonthlyCollection].[SGST] AS [SGST]
+    FROM [dbo].[ARR_MonthlyCollection] AS [ARR_MonthlyCollection]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ARR_MonthlyCollectionTracking" EntityType="Self.ARR_MonthlyCollectionTracking" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ARR_MonthlyCollectionTracking].[id] AS [id], 
+    [ARR_MonthlyCollectionTracking].[TrackId] AS [TrackId], 
+    [ARR_MonthlyCollectionTracking].[InvoiceNo] AS [InvoiceNo], 
+    [ARR_MonthlyCollectionTracking].[CollectedMonth] AS [CollectedMonth], 
+    [ARR_MonthlyCollectionTracking].[CollectedAmount] AS [CollectedAmount], 
+    [ARR_MonthlyCollectionTracking].[Remarks] AS [Remarks], 
+    [ARR_MonthlyCollectionTracking].[SubmittedBy] AS [SubmittedBy], 
+    [ARR_MonthlyCollectionTracking].[SubmittedOn] AS [SubmittedOn], 
+    [ARR_MonthlyCollectionTracking].[DeleteFlag] AS [DeleteFlag]
+    FROM [dbo].[ARR_MonthlyCollectionTracking] AS [ARR_MonthlyCollectionTracking]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ARR_Remarks" EntityType="Self.ARR_Remarks" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ARR_Remarks].[RemarkId] AS [RemarkId], 
+    [ARR_Remarks].[InvoiceNo] AS [InvoiceNo], 
+    [ARR_Remarks].[WBSElement] AS [WBSElement], 
+    [ARR_Remarks].[Remarks] AS [Remarks], 
+    [ARR_Remarks].[ActionBy] AS [ActionBy], 
+    [ARR_Remarks].[UpdatedBy] AS [UpdatedBy], 
+    [ARR_Remarks].[Updatedon] AS [Updatedon], 
+    [ARR_Remarks].[DeleteFlag] AS [DeleteFlag], 
+    [ARR_Remarks].[fileno] AS [fileno]
+    FROM [dbo].[ARR_Remarks] AS [ARR_Remarks]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ARR_UserDescr" EntityType="Self.ARR_UserDescr" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ARR_UserDescr].[descid] AS [descid], 
+    [ARR_UserDescr].[Employeeno] AS [Employeeno], 
+    [ARR_UserDescr].[Description] AS [Description], 
+    [ARR_UserDescr].[Type] AS [Type], 
+    [ARR_UserDescr].[DeleteFlag] AS [DeleteFlag]
+    FROM [dbo].[ARR_UserDescr] AS [ARR_UserDescr]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BankMaster" EntityType="Self.BankMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BankMaster].[BID] AS [BID], 
+    [BankMaster].[BankName] AS [BankName], 
+    [BankMaster].[Dflag] AS [Dflag]
+    FROM [dbo].[BankMaster] AS [BankMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DsoMaster" EntityType="Self.DsoMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DsoMaster].[id] AS [id], 
+    [DsoMaster].[Division] AS [Division], 
+    [DsoMaster].[Region] AS [Region], 
+    [DsoMaster].[ReportDate] AS [ReportDate], 
+    [DsoMaster].[Date] AS [Date], 
+    [DsoMaster].[TotalAmount] AS [TotalAmount], 
+    [DsoMaster].[Type] AS [Type], 
+    [DsoMaster].[Glaccount] AS [Glaccount]
+    FROM [dbo].[DsoMaster] AS [DsoMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="excel" EntityType="Self.excel" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [excel].[id] AS [id], 
+    [excel].[name] AS [name], 
+    [excel].[place] AS [place], 
+    [excel].[score] AS [score], 
+    [excel].[age] AS [age]
+    FROM [dbo].[excel] AS [excel]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RegMaster" EntityType="Self.RegMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RegMaster].[RegID] AS [RegID], 
+    [RegMaster].[Region] AS [Region], 
+    [RegMaster].[Region_short] AS [Region_short], 
+    [RegMaster].[CName] AS [CName], 
+    [RegMaster].[Dflag] AS [Dflag]
+    FROM [dbo].[RegMaster] AS [RegMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UploadHistory" EntityType="Self.UploadHistory" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UploadHistory].[FileNo] AS [FileNo], 
+    [UploadHistory].[FileName] AS [FileName], 
+    [UploadHistory].[SuccessRecords] AS [SuccessRecords], 
+    [UploadHistory].[FailedRecords] AS [FailedRecords], 
+    [UploadHistory].[Status] AS [Status], 
+    [UploadHistory].[Uploaded By] AS [Uploaded By], 
+    [UploadHistory].[System-Date] AS [System-Date], 
+    [UploadHistory].[FileType] AS [FileType]
+    FROM [dbo].[UploadHistory] AS [UploadHistory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="arrbureport" EntityType="Self.arrbureport" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [arrbureport].[id] AS [id], 
+    [arrbureport].[Division] AS [Division], 
+    [arrbureport].[Region] AS [Region], 
+    [arrbureport].[salesoffice] AS [salesoffice], 
+    [arrbureport].[CustomerCode] AS [CustomerCode], 
+    [arrbureport].[docno] AS [docno], 
+    [arrbureport].[postingdate] AS [postingdate], 
+    [arrbureport].[YilSono] AS [YilSono], 
+    [arrbureport].[pono] AS [pono], 
+    [arrbureport].[wbselement] AS [wbselement], 
+    [arrbureport].[wbstext] AS [wbstext], 
+    [arrbureport].[Projectmanager] AS [Projectmanager], 
+    [arrbureport].[InvoiceNo] AS [InvoiceNo], 
+    [arrbureport].[invoicedate] AS [invoicedate], 
+    [arrbureport].[docinvoiceamount] AS [docinvoiceamount], 
+    [arrbureport].[invoiceCurrancy] AS [invoiceCurrancy], 
+    [arrbureport].[inrinvoiceamount] AS [inrinvoiceamount], 
+    [arrbureport].[DocOutstandingAmount] AS [DocOutstandingAmount], 
+    [arrbureport].[DocOSCurrency] AS [DocOSCurrency], 
+    [arrbureport].[outstandingamount] AS [outstandingamount], 
+    [arrbureport].[CollectedAmount] AS [CollectedAmount], 
+    [arrbureport].[tdsamount] AS [tdsamount], 
+    [arrbureport].[retentionamount] AS [retentionamount], 
+    [arrbureport].[notdue] AS [notdue], 
+    [arrbureport].[days1to30] AS [days1to30], 
+    [arrbureport].[Deleteflag] AS [Deleteflag], 
+    [arrbureport].[osDate] AS [osDate], 
+    [arrbureport].[days31to60] AS [days31to60], 
+    [arrbureport].[days61to90] AS [days61to90], 
+    [arrbureport].[days91to180] AS [days91to180], 
+    [arrbureport].[days181to365] AS [days181to365], 
+    [arrbureport].[days366to730] AS [days366to730], 
+    [arrbureport].[days730to1095] AS [days730to1095], 
+    [arrbureport].[Provision] AS [Provision], 
+    [arrbureport].[ActionBy] AS [ActionBy], 
+    [arrbureport].[Remarks] AS [Remarks]
+    FROM [dbo].[arrbureport] AS [arrbureport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Collection_View" EntityType="Self.Collection_View" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Collection_View].[EID] AS [EID], 
+    [Collection_View].[DEPID] AS [DEPID], 
+    [Collection_View].[CUSTID] AS [CUSTID], 
+    [Collection_View].[CUSTNAME] AS [CUSTNAME], 
+    [Collection_View].[AMOUNT] AS [AMOUNT], 
+    [Collection_View].[INVNO] AS [INVNO], 
+    [Collection_View].[INVDETAILS] AS [INVDETAILS], 
+    [Collection_View].[CHQNO] AS [CHQNO], 
+    [Collection_View].[CHQDATE] AS [CHQDATE], 
+    [Collection_View].[CLEARING] AS [CLEARING], 
+    [Collection_View].[DIVISION] AS [DIVISION], 
+    [Collection_View].[SALES] AS [SALES], 
+    [Collection_View].[PMGH] AS [PMGH], 
+    [Collection_View].[JOBCODE] AS [JOBCODE], 
+    [Collection_View].[LD] AS [LD], 
+    [Collection_View].[TDS] AS [TDS], 
+    [Collection_View].[BC] AS [BC], 
+    [Collection_View].[OD] AS [OD], 
+    [Collection_View].[JOB] AS [JOB], 
+    [Collection_View].[PayType] AS [PayType], 
+    [Collection_View].[DFLAG] AS [DFLAG], 
+    [Collection_View].[CLEAR] AS [CLEAR], 
+    [Collection_View].[NONADJUST] AS [NONADJUST], 
+    [Collection_View].[ADJUST] AS [ADJUST], 
+    [Collection_View].[ERROR_MSG] AS [ERROR_MSG], 
+    [Collection_View].[EXCESS] AS [EXCESS], 
+    [Collection_View].[PENALTY] AS [PENALTY], 
+    [Collection_View].[PBG] AS [PBG], 
+    [Collection_View].[RETENTION] AS [RETENTION], 
+    [Collection_View].[SEC_DEPOSIT] AS [SEC_DEPOSIT], 
+    [Collection_View].[IGST] AS [IGST], 
+    [Collection_View].[CGST] AS [CGST], 
+    [Collection_View].[SGST] AS [SGST], 
+    [Collection_View].[Remark] AS [Remark], 
+    [Collection_View].[Expr2] AS [Expr2], 
+    [Collection_View].[DEPOSITNO] AS [DEPOSITNO], 
+    [Collection_View].[EMPNO] AS [EMPNO], 
+    [Collection_View].[DEPOSITDATE] AS [DEPOSITDATE], 
+    [Collection_View].[CURDATE] AS [CURDATE], 
+    [Collection_View].[REGID] AS [REGID], 
+    [Collection_View].[BID] AS [BID], 
+    [Collection_View].[Expr3] AS [Expr3], 
+    [Collection_View].[ID] AS [ID], 
+    [Collection_View].[Region] AS [Region], 
+    [Collection_View].[Region_short] AS [Region_short], 
+    [Collection_View].[CName] AS [CName], 
+    [Collection_View].[Expr1] AS [Expr1]
+    FROM [dbo].[Collection_View] AS [Collection_View]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sampleview" EntityType="Self.sampleview" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [sampleview].[id] AS [id], 
+    [sampleview].[CustomerName] AS [CustomerName], 
+    [sampleview].[Division] AS [Division]
+    FROM [dbo].[sampleview] AS [sampleview]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__GroupDeta__RoleI__1332DBDC" Association="Self.FK__GroupDeta__RoleI__1332DBDC">
+      <End Role="AccessRoles" EntitySet="AccessRoles" />
+      <End Role="GroupDetails" EntitySet="GroupDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileUpload_ARR_UploadHistory" Association="Self.FK_FileUpload_ARR_UploadHistory">
+      <End Role="ARR_UploadHistory" EntitySet="ARR_UploadHistory" />
+      <End Role="FileUpload" EntitySet="FileUpload" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

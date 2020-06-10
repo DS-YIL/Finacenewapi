@@ -1,0 +1,5 @@
+D:\FinanceApi\Finacenewapi\DataLayer\bin\Debug\DataLayer.dll
+D:\FinanceApi\Finacenewapi\DataLayer\bin\Debug\DataLayer.pdb
+D:\FinanceApi\Finacenewapi\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache
+D:\FinanceApi\Finacenewapi\DataLayer\obj\Debug\DataLayer.dll
+D:\FinanceApi\Finacenewapi\DataLayer\obj\Debug\DataLayer.pdb

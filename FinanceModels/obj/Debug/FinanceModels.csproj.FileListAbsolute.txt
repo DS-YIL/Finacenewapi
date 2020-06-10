@@ -1,0 +1,11 @@
+D:\FinanceApi\Finacenewapi\FinanceModels\bin\Debug\FinanceModels.pdb
+D:\FinanceApi\Finacenewapi\FinanceModels\bin\Debug\EntityFramework.dll
+D:\FinanceApi\Finacenewapi\FinanceModels\bin\Debug\EntityFramework.SqlServer.dll
+D:\FinanceApi\Finacenewapi\FinanceModels\bin\Debug\EntityFramework.xml
+D:\FinanceApi\Finacenewapi\FinanceModels\bin\Debug\EntityFramework.SqlServer.xml
+D:\FinanceApi\Finacenewapi\FinanceModels\obj\Debug\FinanceModels.csprojAssemblyReference.cache
+D:\FinanceApi\Finacenewapi\FinanceModels\obj\Debug\FinanceModels.csproj.CopyComplete
+D:\FinanceApi\Finacenewapi\FinanceModels\obj\Debug\FinanceModels.pdb
+D:\FinanceApi\Finacenewapi\FinanceModels\bin\Debug\FinanceModels.dll.config
+D:\FinanceApi\Finacenewapi\FinanceModels\bin\Debug\FinanceModels.dll
+D:\FinanceApi\Finacenewapi\FinanceModels\obj\Debug\FinanceModels.dll
